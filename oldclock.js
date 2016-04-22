@@ -1,28 +1,29 @@
-function OldClock(){
+var OldClock = (function(){
 
-	//var id = this.id || 'OldClock';
+	var parent = Clock;
+	var that = this;
+	var i = 0;
+	
 
-	//var canvas = document.getElementById("OldClock");
-
-	// var canvas = document.getElementById(id);
-	// var ctx = canvas.getContext("2d");
-	// var radius = canvas.height / 2;
-	// ctx.translate(radius, radius);
-	// radius = radius * 0.90;
-
-	this.creatClock = function(id){
+	var creatClock = function(id){
 		var canvas = document.getElementById(id);
+		
 		this.ctx = canvas.getContext("2d");
 		this.radius = canvas.height / 2;
 		this.ctx.translate(this.radius, this.radius);
 		this.radius = this.radius * 0.90;
 	};
 	
+	
+	var display = function(date , id){
+		if(!i)
+			creatClock(id);
+		
+		i++;
 
-	this.displayTime = function(id , date){
-		//id = this.id
-		ctx = this.ctx;
-		radius = this.radius
+		ctx = that.ctx;
+		radius = that.radius;
+
 		setOldClock(ctx, radius, date);
 	};
 
@@ -32,7 +33,6 @@ function OldClock(){
 		drawTime(ctx, radius, date);
 	};
 
-	
 	var drawTime = function(ctx, radius, date){
 		var hour = date.hours;
 		var minute = date.minutes;
@@ -55,7 +55,6 @@ function OldClock(){
 		var grad;
 
 		if(ctx){
-			
 			ctx.beginPath();
 			ctx.arc(0, 0, radius, 0, 2*Math.PI);
 			ctx.fillStyle = 'white';
@@ -106,8 +105,10 @@ function OldClock(){
 			ctx.rotate(-pos);
 		}
 	};
-	
-};
 
-OldClock.prototype = new Clock_fn;
-var OldClock = new OldClock();
+	return{
+		creatClock:creatClock,
+		display:display
+	}
+
+})();

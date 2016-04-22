@@ -1,14 +1,12 @@
-function AlarmClock(){
+var AlarmClock = (function(){
 
-	// var id = this.id || 'AlarmClock' ;
-	//var id = this.id;
+	var parent = Clock;
 
-	this.displayTime = function(id , date){
-		//id =this.id;
-		$('#' + id).html(date.hours +':'+date.minutes +':'+ date.seconds );
-		
+	return{
+		creatClock:parent.creatClock,
+		display:parent.display
 	}
-};
 
-AlarmClock.prototype = new Clock_fn;
-var AlarmClock = new AlarmClock();
+})();
+
+

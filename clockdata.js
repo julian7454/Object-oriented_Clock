@@ -10,6 +10,9 @@ var ClockModel = (function(){
 	};
 
 	var setTimeData = function(time){
+
+		time = time || new Date();
+		
 		timeData.hours = time.getHours(),
 		timeData.minutes = time.getMinutes(),
 		timeData.seconds = time.getSeconds()

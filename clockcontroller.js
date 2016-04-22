@@ -1,12 +1,21 @@
 var ClockController = (function(){
+
+	var clocks = [];
+
+	
+	var addClock = function(clock){
+		clocks.push(clock);
+	};
 	
 	
 	var init = function(){
 
 		var that = this;
 
-		Clock.clockInit();
+		//Clock.clockInit();
 		that.loadTime();
+		that.clockSetInterval();
+
 
 	};
 
@@ -15,7 +24,7 @@ var ClockController = (function(){
 		var that = this;
 		
 		var timeData = ClockModel.getTimeData();
-		that.clockSetInterval();
+		
 
 		that.creatView(timeData);
 
@@ -44,8 +53,9 @@ var ClockController = (function(){
 	};
 
 	var creatView = function(date){
-		Clock.display(date);
-		//console.log(data);
+		
+		for (index in clocks)		
+  		clocks[index].name.display(date, clocks[index].id );
 		
 	};
 
@@ -54,7 +64,8 @@ var ClockController = (function(){
 		loadTime:loadTime,
 		clockSetInterval : clockSetInterval,
 		updateTimer : updateTimer,
-		creatView : creatView
+		creatView : creatView,
+		addClock : addClock
 	
 	}
 })();
