@@ -2,7 +2,7 @@ var OldClock = (function(){
 
 	var parent = Clock;
 	var that = this;
-	var i = 0;
+	var firstDisplay = 0;
 	
 
 	var creatClock = function(id){
@@ -16,10 +16,10 @@ var OldClock = (function(){
 	
 	
 	var display = function(date , id){
-		if(!i)
+		if(!firstDisplay)
 			creatClock(id);
 		
-		i++;
+		firstDisplay++;
 
 		ctx = that.ctx;
 		radius = that.radius;

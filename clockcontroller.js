@@ -4,6 +4,8 @@ var ClockController = (function(){
 
 	
 	var addClock = function(clock){
+
+		clock = clock || {'id':'Clock','name':Clock };
 		clocks.push(clock);
 	};
 	
@@ -24,8 +26,6 @@ var ClockController = (function(){
 		var that = this;
 		
 		var timeData = ClockModel.getTimeData();
-		
-
 		that.creatView(timeData);
 
 
@@ -53,7 +53,7 @@ var ClockController = (function(){
 	};
 
 	var creatView = function(date){
-		
+
 		for (index in clocks)		
   		clocks[index].name.display(date, clocks[index].id );
 		

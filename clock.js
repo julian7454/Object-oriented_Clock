@@ -4,7 +4,6 @@ var Clock = (function(){
 
  	var display = function(date , id){
 
- 		var that = this;
 
  		$('#' + id).html(date.hours + ':' + date.minutes + ':'+ date.seconds );
  	}
